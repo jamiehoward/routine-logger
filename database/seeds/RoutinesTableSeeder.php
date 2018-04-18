@@ -12,6 +12,8 @@ class RoutinesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Routine::class, 50)->create();
+    	\DB::table('routines')->truncate();
+
+        factory(Routine::class, 5)->create(['user_id' => 1]);
     }
 }

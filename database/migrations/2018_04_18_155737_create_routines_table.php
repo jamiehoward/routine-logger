@@ -16,7 +16,7 @@ class CreateRoutinesTable extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->enum('type', ['numeric', 'interval']);
+            $table->enum('type', ['count', 'interval']);
             $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->softDeletes();

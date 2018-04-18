@@ -9,6 +9,8 @@ class Entry extends Model
 {
 	use SoftDeletes;
 
+	public $guarded = [];
+
     public function routine()
     {
     	return $this->belongsTo(Routine::class);

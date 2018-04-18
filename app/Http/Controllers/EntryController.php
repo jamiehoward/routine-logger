@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
+use App\Models\Routine;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller
@@ -33,9 +34,9 @@ class EntryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Routine $routine, Request $request)
     {
-        //
+        return response($routine->entries()->save(Entry::make($request->all())));
     }
 
     /**

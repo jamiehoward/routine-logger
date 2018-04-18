@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('routine-list', require('./components/RoutineList.vue'));
+Vue.component('routine-detail', require('./components/RoutineDetail.vue'));
 
 const app = new Vue({
     el: '#app'

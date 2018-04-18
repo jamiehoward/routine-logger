@@ -3,12 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">My routines</div>
+                    <div class="card-header">{{routine.name}}</div>
 
                     <div class="card-body">
                         <ul>
-                            <li v-for="routine in routines">
-                                <a v-bind:href="getRoutineLink(routine)">{{ routine.name }}</a>
+                            <li v-for="entry in routine.entries">
+                                {{ entry.created_at }}
                             </li>
                         </ul>
                     </div>
@@ -20,24 +20,24 @@
 
 <script>
     export default {
+        props : [
+            'routineId'
+        ],
         data : function() {
             return {
-                routines : []
+                routine : []
             };
         },
         mounted() {
-            this.getRoutines()
+            this.getRoutine()
         },
         methods : {
-            getRoutines : function() {
+            getRoutine : function() {
                 const self = this
-                axios.get('/api/routines')
+                axios.get('/api/routines/' + self.routineId)
                     .then(function(response) {
-                        self.routines = response.data
+                        self.routine = response.data
                     })
-            },
-            getRoutineLink : function(routine) {
-                return "/routines/" + routine.id
             }
         }
     }

@@ -36,7 +36,7 @@ class RoutineController extends Controller
      */
     public function show(Routine $routine)
     {
-        return response($routine);
+        return response(Routine::with('entries')->find($routine->id));
     }
 
     /**

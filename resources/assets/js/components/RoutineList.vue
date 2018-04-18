@@ -16,8 +16,22 @@
 
 <script>
     export default {
+        data : function() {
+            return {
+                routines : []
+            };
+        },
         mounted() {
-            console.log('Component mounted.')
+            this.getRoutines()
+        },
+        methods : {
+            getRoutines : function() {
+                const self = this
+                axios.get('/api/routines')
+                    .then(function(response) {
+                        self.routines = response.data
+                    })
+            }
         }
     }
 </script>

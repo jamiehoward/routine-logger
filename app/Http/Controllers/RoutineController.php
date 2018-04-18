@@ -52,7 +52,7 @@ class RoutineController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the specified routine.
      *
      * @param  \App\Models\Routine  $routine
      * @return \Illuminate\Http\Response

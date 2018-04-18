@@ -8,34 +8,24 @@ use Illuminate\Http\Request;
 class RoutineController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing the user's routines.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return response(\Auth::user()->routines);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created routine for the user.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        return response(\Auth::user()->routines()->save($request->all()));
     }
 
     /**
@@ -46,18 +36,7 @@ class RoutineController extends Controller
      */
     public function show(Routine $routine)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Routine  $routine
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Routine $routine)
-    {
-        //
+        return response($routine);
     }
 
     /**
@@ -69,7 +48,7 @@ class RoutineController extends Controller
      */
     public function update(Request $request, Routine $routine)
     {
-        //
+        return response($routine->update($request->all()));
     }
 
     /**
@@ -80,6 +59,6 @@ class RoutineController extends Controller
      */
     public function destroy(Routine $routine)
     {
-        //
+        return response($routine->delete());
     }
 }

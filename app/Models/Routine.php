@@ -9,6 +9,8 @@ class Routine extends Model
 {
 	use SoftDeletes;
 
+	public $guarded = [];
+
     public function user()
     {
     	return $this->belongsTo(User::class);

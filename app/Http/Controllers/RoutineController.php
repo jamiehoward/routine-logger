@@ -25,7 +25,13 @@ class RoutineController extends Controller
      */
     public function store(Request $request)
     {
-        return response(\Auth::user()->routines()->save($request->all()));
+        $this->validate($request, [
+            'name' => 'required',
+            'type' => 'required',
+        ]);
+
+        return response(\Auth::user()->routines()
+            ->save(Routine::make($request->all())));
     }
 
     /**

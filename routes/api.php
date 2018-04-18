@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->get('/routines', 'RoutineController@index');
 Route::middleware('auth:api')->get('/routines/{routine}', 'RoutineController@show');
+Route::middleware('auth:api')->post('/routines', 'RoutineController@store');

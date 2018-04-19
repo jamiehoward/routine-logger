@@ -12,3 +12,18 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.col {padding:0; margin:0}
+.btn { border-radius: 0;}
+.btn-lg { height:80px; font-size: 25px;}
+
+a:hover { text-decoration: none; }
+
+.routine-list { list-style:none; padding: 15px 0px; margin:0px;}
+
+.routine-list-item { 
+	font-size:25px; 
+	border-bottom: #cacaca 1px solid;
+	padding: 0px;
+	margin:0px;
+}

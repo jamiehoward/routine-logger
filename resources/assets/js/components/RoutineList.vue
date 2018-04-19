@@ -1,22 +1,15 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">My routines</div>
 
-                    <div class="card-body">
-                        <ul>
-                            <li v-for="routine in routines">
-                                <a v-bind:href="getRoutineLink(routine)">{{ routine.name }}</a>
-                            </li>
-                        </ul>
+        <div class="col">
+            <ul class="routine-list">
+                <li v-for="routine in routines" class="routine-list-item">
+                    <a v-bind:href="getRoutineLink(routine)">{{ routine.name }}</a>
+                </li>
+            </ul>
 
-                        <div class="row">
-                            <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addRoutineModal">Add routine</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="row">
+                <button class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#addRoutineModal">&plus; Add routine</button>
             </div>
         </div>
 

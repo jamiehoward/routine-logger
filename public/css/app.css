@@ -10426,3 +10426,23 @@ a:hover {
   margin: 0px;
 }
 
+form {
+  padding: 0;
+  margin: 0;
+}
+
+input.form-control {
+  height: 50px;
+  font-size: 25px;
+}
+
+.past-entry-container {
+  margin: 35px 0px;
+}
+
+.entry-interval,
+.entry-count {
+  font-weight: 700;
+  font-size: 25px;
+}
+

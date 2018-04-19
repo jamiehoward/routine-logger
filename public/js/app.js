@@ -47403,7 +47403,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "col" }, [
       _c(
         "ul",
@@ -47725,6 +47725,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['routineId'],
@@ -47749,9 +47755,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addEntry: function addEntry(params) {
             var self = this;
             axios.post('/api/routines/' + self.routineId + '/entries', params).then(function (response) {
-                swal('Success', 'Entry added', 'success').then(function () {
-                    window.location.reload();
-                });
+                window.location.reload();
             });
         },
         addCountEntry: function addCountEntry() {
@@ -47761,7 +47765,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var start = moment.now();
             var self = this;
 
-            $("#startTimerButton").fadeOut();
+            $("#startTimerButton").hide();
             $("#stopTimerButton").removeClass('d-none');
 
             setInterval(function () {
@@ -47779,7 +47783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.pad(hours) + ":" + this.pad(minutes) + ":" + this.pad(secs);
         },
         stopTimer: function stopTimer() {
-            var seconds = moment.duration(this.duration).seconds;
+            var seconds = moment.duration(this.duration).seconds();
             this.addEntry({ count: seconds });
         }
     }
@@ -47794,122 +47798,129 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v(_vm._s(_vm.routine.name))
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _vm.routine.type == "count"
-              ? _c(
-                  "form",
-                  {
-                    staticClass: "form",
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        _vm.addCountEntry()
-                      }
+    _c("div", { staticClass: "col" }, [
+      _vm.routine.type == "count"
+        ? _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  _vm.addCountEntry()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "count" } }, [
+                  _vm._v(_vm._s(_vm.routine.name) + ":")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.entryCount,
+                      expression: "entryCount"
                     }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        { staticClass: "form-label", attrs: { for: "count" } },
-                        [_vm._v("Count")]
-                      ),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.entryCount,
-                            expression: "entryCount"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: { type: "number", name: "count", required: "" },
-                        domProps: { value: _vm.entryCount },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.entryCount = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0)
-                  ]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.routine.type == "interval"
-              ? _c("div", { staticClass: "row" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary btn-lg btn-block",
-                      attrs: { id: "startTimerButton" },
-                      on: {
-                        click: function($event) {
-                          _vm.startTimer()
-                        }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "number", name: "count", required: "" },
+                  domProps: { value: _vm.entryCount },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    },
-                    [_vm._v("Start a new timed entry")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info btn-lg btn-block d-none",
-                      attrs: { id: "stopTimerButton" },
-                      on: {
-                        click: function($event) {
-                          _vm.stopTimer()
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.duration))]
-                  )
-                ])
-              : _vm._e(),
+                      _vm.entryCount = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.routine.type == "interval"
+        ? _c("div", { staticClass: "row" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-lg btn-block",
+                attrs: { id: "startTimerButton" },
+                on: {
+                  click: function($event) {
+                    _vm.startTimer()
+                  }
+                }
+              },
+              [_vm._v("Start a new timed entry")]
+            ),
             _vm._v(" "),
-            _c("hr"),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-info btn-lg btn-block d-none",
+                attrs: { id: "stopTimerButton" },
+                on: {
+                  click: function($event) {
+                    _vm.stopTimer()
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.duration))]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("hr", { staticClass: "past-entry-container" }),
+      _vm._v(" "),
+      _vm.routine.entries.length > 0
+        ? _c("div", [
+            _vm._m(1),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "ul",
-                _vm._l(_vm.routine.entries, function(entry) {
-                  return _c("li", [
+            _c(
+              "table",
+              { staticClass: "table" },
+              _vm._l(_vm.routine.entries, function(entry) {
+                return _c("tr", [
+                  _c("td", [
                     _vm.routine.type == "count"
-                      ? _c("span", { staticClass: "badge badge-primary" }, [
+                      ? _c("span", { staticClass: "entry-count" }, [
                           _vm._v(
-                            "\n                                    " +
+                            "\n                            " +
                               _vm._s(entry.count) +
-                              "\n                                "
+                              "\n                        "
                           )
                         ])
                       : _vm._e(),
+                    _vm._v(" "),
+                    _vm.routine.type == "interval"
+                      ? _c("span", { staticClass: "entry-interval" }, [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(_vm.hhmmss(entry.count)) +
+                              "\n                        "
+                          )
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "entry-timestamp text-right" }, [
                     _vm._v(
-                      "\n                                " +
+                      "\n                        " +
                         _vm._s(entry.created_at) +
-                        "\n                            "
+                        "\n                    "
                     )
                   ])
-                })
-              )
-            ])
+                ])
+              })
+            )
           ])
-        ])
-      ])
+        : _vm._e()
     ])
   ])
 }
@@ -47921,9 +47932,20 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c(
         "button",
-        { staticClass: "btn btn-primary btn-block", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-primary btn-lg btn-block",
+          attrs: { type: "submit" }
+        },
         [_vm._v("Submit entry")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("h3", [_vm._v("Past entries")])
     ])
   }
 ]

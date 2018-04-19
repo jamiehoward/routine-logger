@@ -1,44 +1,50 @@
 <template>
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">{{routine.name}}</div>
+        <div class="col">
+            
 
-                    <div class="card-body">
-                        <form class="form" v-on:submit.prevent="addCountEntry()" v-if="routine.type == 'count'">
+            <form v-on:submit.prevent="addCountEntry()" v-if="routine.type == 'count'">
 
-                            <div class="form-group">
-                                <label for="count" class="form-label">Count</label>
-                                <input type="number" name="count" class="form-control" v-model="entryCount" required/>
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Submit entry</button>
-                            </div>
-
-                        </form>
-
-                        <div class="row" v-if="routine.type == 'interval'">
-                            <button class="btn btn-primary btn-lg btn-block" v-on:click="startTimer()" id="startTimerButton">Start a new timed entry</button>
-
-                            <button class="btn btn-info btn-lg btn-block d-none" v-on:click="stopTimer()" id="stopTimerButton">{{duration}}</button>
-                        </div>
-
-                        <hr />
-
-                        <div class="row">
-                            <ul>
-                                <li v-for="entry in routine.entries">
-                                    <span v-if="routine.type == 'count'" class="badge badge-primary">
-                                        {{entry.count}}
-                                    </span>
-                                    {{ entry.created_at }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="count">{{routine.name}}:</label>
+                    <input type="number" name="count" class="form-control" v-model="entryCount" required/>
                 </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit entry</button>
+                </div>
+
+            </form>
+
+            <div class="row" v-if="routine.type == 'interval'">
+                <button class="btn btn-primary btn-lg btn-block" v-on:click="startTimer()" id="startTimerButton">Start a new timed entry</button>
+
+                <button class="btn btn-info btn-lg btn-block d-none" v-on:click="stopTimer()" id="stopTimerButton">{{duration}}</button>
+            </div>
+
+            <hr class="past-entry-container" />
+
+            <div v-if="routine.entries.length > 0">
+                <div class="text-center">
+                    <h3>Past entries</h3>
+                </div>
+
+                <table class="table">
+                    <tr v-for="entry in routine.entries">
+                        <td>
+                            <span v-if="routine.type == 'count'" class="entry-count">
+                                {{entry.count}}
+                            </span>
+
+                            <span v-if="routine.type == 'interval'" class="entry-interval">
+                                {{hhmmss(entry.count)}}
+                            </span>
+                        </td>
+                        <td class="entry-timestamp text-right">
+                            {{ entry.created_at }}
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -71,9 +77,7 @@
                 const self = this
                 axios.post('/api/routines/' + self.routineId + '/entries', params)
                     .then(function(response) {
-                        swal('Success', 'Entry added', 'success').then(function() {
-                            window.location.reload()
-                        })
+                        window.location.reload()
                     })
             },
             addCountEntry : function() {
@@ -83,7 +87,7 @@
                 var start = moment.now()
                 const self = this
 
-                $("#startTimerButton").fadeOut();
+                $("#startTimerButton").hide();
                 $("#stopTimerButton").removeClass('d-none');
 
                 setInterval(function(){
@@ -101,9 +105,9 @@
               return this.pad(hours)+":"+this.pad(minutes)+":"+this.pad(secs);
             },
             stopTimer : function() {
-                var seconds = moment.duration(this.duration).seconds;
+                var seconds = moment.duration(this.duration).seconds();
                 this.addEntry({count: seconds})
-            },
+            }
         }
     }
 </script>

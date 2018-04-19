@@ -8,6 +8,7 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -21,9 +22,18 @@ a:hover { text-decoration: none; }
 
 .routine-list { list-style:none; padding: 15px 0px; margin:0px;}
 
-.routine-list-item { 
-	font-size:25px; 
+.routine-list-item {
+	font-size:25px;
 	border-bottom: #cacaca 1px solid;
 	padding: 0px;
 	margin:0px;
 }
+
+form { padding:0; margin:0}
+
+input.form-control { height:50px; font-size:25px;}
+
+.past-entry-container { margin: 35px 0px; }
+
+.entry-interval,
+.entry-count { font-weight:700; font-size: 25px;}

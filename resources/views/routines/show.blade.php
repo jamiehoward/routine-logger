@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.blank')
+
+@section('nav')
+	<a href="/home">Back</a>
+@endsection
 
 @section('content')
-	<div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-				<a href="/home">See all routines</a>
-			</div>
-		</div>
+<div class="container">
+	<div class="row justify-content-center">
+		<routine-detail :routine-id="{{$routineId}}"></routine-detail>
 	</div>
-
-	<routine-detail :routine-id="{{$routineId}}"></routine-detail>
+</div>
 @endsection

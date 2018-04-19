@@ -47355,9 +47355,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -47454,12 +47451,6 @@ var render = function() {
                   },
                   [
                     _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        { staticClass: "form-label", attrs: { for: "name" } },
-                        [_vm._v("Name")]
-                      ),
-                      _vm._v(" "),
                       _c("input", {
                         directives: [
                           {
@@ -47470,7 +47461,12 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", name: "name", required: "" },
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          required: "",
+                          placeholder: "Name"
+                        },
                         domProps: { value: _vm.routineName },
                         on: {
                           input: function($event) {
@@ -47484,12 +47480,6 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
-                      _c(
-                        "label",
-                        { staticClass: "form-label", attrs: { for: "type" } },
-                        [_vm._v("Type")]
-                      ),
-                      _vm._v(" "),
                       _c(
                         "select",
                         {
@@ -47592,18 +47582,14 @@ var staticRenderFns = [
         [_vm._v("Add a new routine")]
       ),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
+      _c("button", {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      })
     ])
   }
 ]

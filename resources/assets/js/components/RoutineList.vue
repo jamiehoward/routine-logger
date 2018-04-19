@@ -19,19 +19,16 @@
               <div class="modal-header">
                 <h5 class="modal-title" id="addRoutineLabel">Add a new routine</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
                 <form class="form" v-on:submit.prevent="addRoutine()">
 
                     <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" name="name" class="form-control" v-model="routineName" required/>
+                        <input type="text" name="name" class="form-control" v-model="routineName" required placeholder="Name"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="type" class="form-label">Type</label>
                         <select name="type" class="form-control" v-model="routineType">
                             <option value="count">count</option>
                             <option value="interval">interval</option>

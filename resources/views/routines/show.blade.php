@@ -1,7 +1,7 @@
 @extends('layouts.blank')
 
 @section('nav')
-	<a href="/home">Back</a>
+	<a href="/home" class="back-link">Back</a>
 @endsection
 
 @section('content')

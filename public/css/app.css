@@ -10422,7 +10422,7 @@ a:hover {
 .routine-list-item {
   font-size: 25px;
   border-bottom: #cacaca 1px solid;
-  padding: 0px;
+  padding: 20px;
   margin: 0px;
 }
 
@@ -10431,6 +10431,7 @@ form {
   margin: 0;
 }
 
+select.form-control,
 input.form-control {
   height: 50px;
   font-size: 25px;
@@ -10444,5 +10445,30 @@ input.form-control {
 .entry-count {
   font-weight: 700;
   font-size: 25px;
+}
+
+.modal-dialog {
+  width: 100%;
+  margin: 0;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-footer {
+  padding: 0;
+}
+
+.modal-footer > button {
+  padding: 0;
+  width: 50%;
+  height: 80px;
+  margin: 0 !important;
+  font-size: 20px;
+}
+
+.back-link {
+  font-size: 20px;
 }
 

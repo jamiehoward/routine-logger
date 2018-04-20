@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid">
-
         <div class="col">
             <ul class="routine-list">
                 <li v-for="routine in routines" class="routine-list-item">
@@ -29,9 +28,10 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="type" class="form-label">Type of routine</label>
                         <select name="type" class="form-control" v-model="routineType">
                             <option value="count">count</option>
-                            <option value="interval">interval</option>
+                            <option value="interval">timed</option>
                         </select>
                     </div>
 

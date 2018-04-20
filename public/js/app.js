@@ -64120,6 +64120,12 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "form-group" }, [
                       _c(
+                        "label",
+                        { staticClass: "form-label", attrs: { for: "type" } },
+                        [_vm._v("Type of routine")]
+                      ),
+                      _vm._v(" "),
+                      _c(
                         "select",
                         {
                           directives: [
@@ -64154,7 +64160,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "interval" } }, [
-                            _vm._v("interval")
+                            _vm._v("timed")
                           ])
                         ]
                       )

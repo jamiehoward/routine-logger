@@ -64461,7 +64461,12 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "number", name: "count", required: "" },
+                  attrs: {
+                    type: "number",
+                    name: "count",
+                    required: "",
+                    pattern: "\\d*"
+                  },
                   domProps: { value: _vm.entryCount },
                   on: {
                     input: function($event) {

@@ -7,7 +7,7 @@
 
                 <div class="form-group">
                     <label for="count">{{routine.name}}:</label>
-                    <input type="number" name="count" class="form-control" v-model="entryCount" required/>
+                    <input type="number" name="count" class="form-control" v-model="entryCount" required pattern="\d*"/>
                 </div>
 
                 <div class="form-group">

@@ -17,6 +17,7 @@
             </form>
 
             <div class="row" v-if="routine.type == 'interval'">
+                <label for="count">{{routine.name}}:</label>
                 <button class="btn btn-primary btn-lg btn-block" v-on:click="startTimer()" id="startTimerButton">Start a new timed entry</button>
 
                 <button class="btn btn-info btn-lg btn-block d-none" v-on:click="stopTimer()" id="stopTimerButton">{{duration}}</button>

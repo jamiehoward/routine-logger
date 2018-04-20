@@ -64365,6 +64365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['routineId'],
@@ -64480,6 +64481,10 @@ var render = function() {
       _vm._v(" "),
       _vm.routine.type == "interval"
         ? _c("div", { staticClass: "row" }, [
+            _c("label", { attrs: { for: "count" } }, [
+              _vm._v(_vm._s(_vm.routine.name) + ":")
+            ]),
+            _vm._v(" "),
             _c(
               "button",
               {

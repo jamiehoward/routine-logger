@@ -8,7 +8,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name = "viewport" content = "initial-scale = 1.0, user-scalable = no">
     <link rel="apple-touch-icon" href="/img/icon.png">
-    <link rel="apple-touch-startup-image" href="/img/splash.png" />
+    <link rel="apple-touch-startup-image" media="(device-width: 750px) and (device-height: 1334px)
+         and (-webkit-device-pixel-ratio: 2)" href="/img/splash.png" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

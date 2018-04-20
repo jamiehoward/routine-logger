@@ -63988,6 +63988,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -64169,19 +64173,32 @@ var render = function() {
                   [_vm._v("Close")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "submit" },
-                    on: {
-                      click: function($event) {
-                        _vm.addRoutine()
-                      }
-                    }
-                  },
-                  [_vm._v("Add Routine")]
-                )
+                _vm.routineName
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit" },
+                        on: {
+                          click: function($event) {
+                            _vm.addRoutine()
+                          }
+                        }
+                      },
+                      [_vm._v("\n                Add Routine\n            ")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.routineName
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "submit", disabled: "" }
+                      },
+                      [_vm._v("Add Routine")]
+                    )
+                  : _vm._e()
               ])
             ])
           ]

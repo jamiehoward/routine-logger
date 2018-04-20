@@ -8,11 +8,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+body { background: linear-gradient(#F9D036, #FF7456)}
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.navbar-laravel a { color:#5a5a5a; }
 
 .col {padding:0; margin:0}
 .btn { border-radius: 0;}
@@ -46,3 +49,4 @@ input.form-control { height:50px; font-size:25px;}
 
 
 .back-link { font-size:20px; }
+

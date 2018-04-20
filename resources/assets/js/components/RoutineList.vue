@@ -4,7 +4,7 @@
         <div class="col">
             <ul class="routine-list">
                 <li v-for="routine in routines" class="routine-list-item">
-                    <a v-bind:href="getRoutineLink(routine)">{{ routine.name }}</a>
+                    <a v-bind:href="getRoutineLink(routine)" target="_self">{{ routine.name }}</a>
                 </li>
             </ul>
 

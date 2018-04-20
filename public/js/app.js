@@ -30460,16 +30460,8 @@ Vue.component('routine-list', __webpack_require__(166));
 Vue.component('routine-detail', __webpack_require__(169));
 
 var app = new Vue({
-    el: '#app'
+  el: '#app'
 });
-
-var a = document.getElementsByTagName("a");
-for (var i = 0; i < a.length; i++) {
-    a[i].onclick = function () {
-        window.location = this.getAttribute("href");
-        return false;
-    };
-}
 
 /***/ }),
 /* 140 */
@@ -64048,9 +64040,11 @@ var render = function() {
         { staticClass: "routine-list" },
         _vm._l(_vm.routines, function(routine) {
           return _c("li", { staticClass: "routine-list-item" }, [
-            _c("a", { attrs: { href: _vm.getRoutineLink(routine) } }, [
-              _vm._v(_vm._s(routine.name))
-            ])
+            _c(
+              "a",
+              { attrs: { href: _vm.getRoutineLink(routine), target: "_self" } },
+              [_vm._v(_vm._s(routine.name))]
+            )
           ])
         })
       ),
